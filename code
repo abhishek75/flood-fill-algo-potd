@@ -1,0 +1,13 @@
+int source = image[sr][sc];
+        solve(image, source, sr, sc, newColor);
+        return image;
+    }
+    void solve(vector<vector<int>>& image, int source, int sr, int sc, int newColor) {
+        if(newColor==source) return;
+        image[sr][sc] = newColor;
+        int dirx[] = {-1, 0, +1, 0};
+        int diry[] = {0, +1, 0, -1};
+        for(int i=0; i<4; i++) {
+            if(sr+dirx[i]>=0 && sr+dirx[i]<image.size() && sc+diry[i]>=0 && sc+diry[i]<image[0].size() && image[sr+dirx[i]][sc+diry[i]]==source) {
+                solve(image, source, sr+dirx[i], sc+diry[i], newColor);
+            }
